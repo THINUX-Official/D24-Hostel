@@ -5,10 +5,23 @@ package lk.ijse.d24.hostel.entity;
     @created 01-Apr-23 - 19:40 
 */
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity(name = "room")
 public class Room {
+    @Id
+    @Column(name = "room_type_id", length = 10)
     String roomTypeId;
+
+    @Column(name = "room_type")
     String type;
+
+    @Column(name = "room_key_money")
     String keyMoney;
+
+    @Column(name = "room_qty")
     int qty;
 
     public Room() {

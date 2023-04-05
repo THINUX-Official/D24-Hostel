@@ -5,14 +5,29 @@ package lk.ijse.d24.hostel.entity;
     @created 01-Apr-23 - 19:30 
 */
 
+import javax.persistence.*;
 import java.util.Date;
 
+@Entity(name = "student")
 public class Student {
+
+    @Id
+    @Column(name = "student_id", length = 10)
     private String sId;
+
+    @Column(name = "student_name")
     private String name;
+
+    @Column(name = "student_address")
     private String address;
+
+    @Column(name = "student_contact")
     private String contact;
+
+    @Column(name = "student_date_of_birth")
     private Date dob;
+
+    @Column(name = "student_gender")
     private String gender;
 
     public Student() {
