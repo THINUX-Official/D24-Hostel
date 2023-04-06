@@ -45,7 +45,7 @@ public class LoginFormController {
     private void loginMethod() throws IOException {
         if (txtUsername.getText().equals("1") && txtPassword.getText().equals("1")) {
             status = 1;
-//            Navigation.navigate(Routes.ADMIN_MENU, loginPane);
+            Navigation.navigate(Routes.DASHBOARD, loginPane);
         } else if (txtUsername.getText().equals("2") && txtPassword.getText().equals("2")) {
             status = 2;
 //            Navigation.navigate(Routes.RECEPTION_MENU, loginPane);

@@ -29,12 +29,28 @@ public class Navigation {
                 window.setTitle("Login Form");
                 initUI("LoginForm.fxml");
                 break;
+            case DASHBOARD:
+                window.setTitle("Dashboard Form");
+                initUI("MenuForm.fxml");
+                break;
+            case ROOM:
+                window.setTitle("Room Form");
+                initUI("LoginForm.fxml");
+                break;
+            case RESERVATION:
+                window.setTitle("Reservation Form");
+                initUI("LoginForm.fxml");
+                break;
+            case STUDENT:
+                window.setTitle("Student Form");
+                initUI("LoginForm.fxml");
+                break;
             default:
                 new Alert(Alert.AlertType.ERROR, "Not suitable UI found!").show();
         }
     }
     private static void initUI(String location) throws IOException {
         Navigation.pane.getChildren().add(FXMLLoader.load(Navigation.class
-                .getResource("/lk/ijse/salon/view/" + location)));
+                .getResource("/lk/ijse/d24/hostel/view/" + location)));
     }
 }
