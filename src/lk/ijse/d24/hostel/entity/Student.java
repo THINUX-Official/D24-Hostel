@@ -6,7 +6,9 @@ package lk.ijse.d24.hostel.entity;
 */
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity(name = "student")
 public class Student {
@@ -29,6 +31,9 @@ public class Student {
 
     @Column(name = "student_gender")
     private String gender;
+
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "student")
+    private List<Reservation> reservationList = new ArrayList<>();
 
     public Student() {
     }

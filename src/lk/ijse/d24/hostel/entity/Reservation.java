@@ -5,9 +5,7 @@ package lk.ijse.d24.hostel.entity;
     @created 01-Apr-23 - 19:38 
 */
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Date;
 
 @Entity (name = "reservation")
@@ -28,6 +26,14 @@ public class Reservation {
 
     @Column (name = "reservation_status")
     private String status;
+
+    @ManyToOne
+    @JoinColumn(name = "student_id")
+    private Student student;
+
+    @ManyToOne
+    @JoinColumn(name = "room_type_id")
+    private Room room;
 
     public Reservation() {
     }

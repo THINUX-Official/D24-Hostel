@@ -5,9 +5,9 @@ package lk.ijse.d24.hostel.entity;
     @created 01-Apr-23 - 19:40 
 */
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity(name = "room")
 public class Room {
@@ -23,6 +23,9 @@ public class Room {
 
     @Column(name = "room_qty")
     int qty;
+
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "room")
+    private List<Reservation> reservationList = new ArrayList<>();
 
     public Room() {
     }
