@@ -6,6 +6,6 @@ package lk.ijse.d24.hostel.util;
 */
 
 public enum Routes {
-    LOGIN, DASHBOARD, ROOM, RESERVATION, STUDENT
+    LOGIN, DASHBOARD, ROOM, RESERVATION, STUDENT, USER
 
 }

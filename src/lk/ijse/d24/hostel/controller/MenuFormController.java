@@ -92,4 +92,9 @@ public class MenuFormController {
     public void studentOnAction(ActionEvent actionEvent) throws IOException {
         Navigation.navigate(Routes.STUDENT, pane);
     }
+
+    public void UserOnAction(ActionEvent actionEvent) throws IOException {
+        Navigation.navigate(Routes.USER, pane);
+
+    }
 }

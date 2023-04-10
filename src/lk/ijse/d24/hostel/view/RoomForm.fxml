@@ -127,4 +127,9 @@
          <Font name="Aharoni Bold" size="24.0" />
       </font>
    </Label>
+   <Label fx:id="lblType" layoutX="763.0" layoutY="157.0" prefWidth="725.0" textFill="RED">
+      <font>
+         <Font name="Aharoni Bold" size="24.0" />
+      </font>
+   </Label>
 </AnchorPane>

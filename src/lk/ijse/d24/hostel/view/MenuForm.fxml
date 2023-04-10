@@ -171,10 +171,10 @@
    </Label>
    <Label layoutX="1662.0" layoutY="1049.0" text="© 2022 THINUX - All Rights Reserved" />
    <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="25.0" layoutY="206.0" pickOnBounds="true" preserveRatio="true">
-      <Image url="@../assets/icons/clock.png" />
+      <Image url="@../assets/icons/home.png" />
    </ImageView>
    <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="25.0" layoutY="381.0" pickOnBounds="true" preserveRatio="true">
-      <Image url="@../assets/icons/product.png" />
+      <Image url="@../assets/icons/icons8-students-96.png" />
    </ImageView>
    <JFXButton alignment="BOTTOM_LEFT" buttonType="RAISED" layoutX="14.0" layoutY="109.0" maxHeight="-Infinity" maxWidth="-Infinity" onAction="#dashboardOnAction" prefHeight="50.0" prefWidth="400.0" stylesheets="@../assets/css/CSS.css" text="     Dashboard" textFill="WHITE">
       <font>
@@ -192,7 +192,7 @@
       </cursor>
    </JFXButton>
    <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="25.0" layoutY="118.0" pickOnBounds="true" preserveRatio="true">
-      <Image url="@../assets/icons/home.png" />
+      <Image url="@../assets/icons/icons8-top-menu-96.png" />
    </ImageView>
    <JFXButton alignment="BOTTOM_LEFT" buttonType="RAISED" layoutX="14.0" layoutY="285.0" maxHeight="-Infinity" maxWidth="-Infinity" onAction="#reservationOnAction" prefHeight="50.0" prefWidth="400.0" stylesheets="@../assets/css/CSS.css" text="     Reservation" textFill="WHITE">
       <font>
@@ -210,7 +210,7 @@
       </cursor>
    </JFXButton>
    <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="25.0" layoutY="294.0" pickOnBounds="true" preserveRatio="true">
-      <Image url="@../assets/icons/barber-chair.png" />
+      <Image url="@../assets/icons/icons8-reception-96.png" />
    </ImageView>
    <JFXButton buttonType="RAISED" layoutX="1806.0" layoutY="14.0" onAction="#logoutOnAction" prefHeight="40.0" prefWidth="100.0" styleClass="dark_button" stylesheets="@../assets/css/CSS.css" text="Logout" textFill="WHITE">
       <font>
@@ -219,4 +219,24 @@
       <cursor>
          <Cursor fx:constant="HAND" />
       </cursor></JFXButton>
+   <JFXButton alignment="BOTTOM_LEFT" buttonType="RAISED" layoutX="14.0" layoutY="460.0" maxHeight="-Infinity" maxWidth="-Infinity" onAction="#UserOnAction" prefHeight="50.0" prefWidth="400.0" stylesheets="@../assets/css/CSS.css" text="     User" textFill="WHITE">
+      <font>
+         <Font name="Aharoni Bold" size="36.0" />
+      </font>
+      <styleClass>
+         <String fx:value="tab_button" />
+         <String fx:value="left_tab_border" />
+      </styleClass>
+      <effect>
+         <DropShadow />
+      </effect>
+      <cursor>
+         <Cursor fx:constant="HAND" />
+      </cursor>
+   </JFXButton>
+   <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="25.0" layoutY="469.0" pickOnBounds="true" preserveRatio="true">
+      <image>
+         <Image url="@../assets/icons/gender-neutral-user.png" />
+      </image>
+   </ImageView>
 </AnchorPane>
