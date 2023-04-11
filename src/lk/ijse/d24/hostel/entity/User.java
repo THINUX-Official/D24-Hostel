@@ -5,10 +5,21 @@ package lk.ijse.d24.hostel.entity;
     @created 11-Apr-23 - 18:16 
 */
 
+import javax.persistence.Column;
+import javax.persistence.Id;
+
 public class User {
+    @Id
+    @Column(name = "user_id")
     private String uId;
+
+    @Column(name = "user_name")
     private String userName;
+
+    @Column(name = "user_password")
     private String password;
+
+    @Column(name = "user_contact")
     private String contact;
 
     public User() {
