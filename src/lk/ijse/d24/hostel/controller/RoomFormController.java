@@ -59,36 +59,6 @@ public class RoomFormController {
     @FXML
     private Label lblQtyOnHand;
 
-    @FXML
-    void addOnAction(ActionEvent event) {
-
-    }
-
-    @FXML
-    void deleteOnAction(ActionEvent event) {
-
-    }
-
-    @FXML
-    void txtIIDKeyTypeOnAction(KeyEvent event) {
-
-    }
-
-    @FXML
-    void txtQtyOnHandKeyTypeOnAction(KeyEvent event) {
-
-    }
-
-    @FXML
-    void txtUnitPriceKeyTypeOnAction(KeyEvent event) {
-
-    }
-
-    @FXML
-    void updateOnAction(ActionEvent event) {
-
-    }
-
     public void addOnAction(javafx.event.ActionEvent actionEvent) {
 
     }

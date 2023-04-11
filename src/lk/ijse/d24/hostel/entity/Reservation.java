@@ -18,12 +18,6 @@ public class Reservation {
     @Column(name = "reservation_date")
     private Date date;
 
-    @Column(name = "reservation_student_id")
-    private String sId;
-
-    @Column(name = "room_type_id")
-    private String roomTypeId;
-
     @Column (name = "reservation_status")
     private String status;
 
@@ -38,12 +32,12 @@ public class Reservation {
     public Reservation() {
     }
 
-    public Reservation(String resId, Date date, String sId, String roomTypeId, String status) {
+    public Reservation(String resId, Date date, String status, Student student, Room room) {
         this.resId = resId;
         this.date = date;
-        this.sId = sId;
-        this.roomTypeId = roomTypeId;
         this.status = status;
+        this.student = student;
+        this.room = room;
     }
 
     public String getResId() {
@@ -62,22 +56,6 @@ public class Reservation {
         this.date = date;
     }
 
-    public String getsId() {
-        return sId;
-    }
-
-    public void setsId(String sId) {
-        this.sId = sId;
-    }
-
-    public String getRoomTypeId() {
-        return roomTypeId;
-    }
-
-    public void setRoomTypeId(String roomTypeId) {
-        this.roomTypeId = roomTypeId;
-    }
-
     public String getStatus() {
         return status;
     }
@@ -86,14 +64,30 @@ public class Reservation {
         this.status = status;
     }
 
+    public Student getStudent() {
+        return student;
+    }
+
+    public void setStudent(Student student) {
+        this.student = student;
+    }
+
+    public Room getRoom() {
+        return room;
+    }
+
+    public void setRoom(Room room) {
+        this.room = room;
+    }
+
     @Override
     public String toString() {
         return "Reservation{" +
                 "resId='" + resId + '\'' +
                 ", date=" + date +
-                ", sId='" + sId + '\'' +
-                ", roomTypeId='" + roomTypeId + '\'' +
                 ", status='" + status + '\'' +
+                ", student=" + student +
+                ", room=" + room +
                 '}';
     }
 }
