@@ -8,7 +8,7 @@ package lk.ijse.d24.hostel.model;
 import java.util.Date;
 
 public class StudentDTO {
-    private String sID;
+    private String sId;
     private String name;
     private String address;
     private String contact;
@@ -18,8 +18,8 @@ public class StudentDTO {
     public StudentDTO() {
     }
 
-    public StudentDTO(String sID, String name, String address, String contact, Date date, String gender) {
-        this.sID = sID;
+    public StudentDTO(String sId, String name, String address, String contact, Date date, String gender) {
+        this.sId = sId;
         this.name = name;
         this.address = address;
         this.contact = contact;
@@ -27,12 +27,12 @@ public class StudentDTO {
         this.gender = gender;
     }
 
-    public String getsID() {
-        return sID;
+    public String getsId() {
+        return sId;
     }
 
-    public void setsID(String sID) {
-        this.sID = sID;
+    public void setsId(String sId) {
+        this.sId = sId;
     }
 
     public String getName() {
@@ -78,7 +78,7 @@ public class StudentDTO {
     @Override
     public String toString() {
         return "StudentDTO{" +
-                "sID='" + sID + '\'' +
+                "sId='" + sId + '\'' +
                 ", name='" + name + '\'' +
                 ", address='" + address + '\'' +
                 ", contact='" + contact + '\'' +

@@ -40,6 +40,12 @@ public class Reservation {
         this.room = room;
     }
 
+    public Reservation(String resId, Date date, String status) {
+        this.resId = resId;
+        this.date = date;
+        this.status = status;
+    }
+
     public String getResId() {
         return resId;
     }
