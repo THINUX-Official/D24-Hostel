@@ -18,10 +18,15 @@ public class DAOFactory {
         return daoFactory == null
                 ? daoFactory = new DAOFactory()
                 : daoFactory;
+
+        /*if (daoFactory==null){
+            daoFactory=new DAOFactory();
+        }
+        return daoFactory;*/
     }
 
     public enum DAOTypes {
-        ROOMDAO, STUDENTDAO, RESERVATIONDAO, USERDAO, QUERYDAO
+        ROOMDAO, STUDENTDAO, RESERVATIONDAO, USERDAO, QUERYDAO;
     }
 
     public SuperDAO getDAO(DAOTypes daoTypes) {
