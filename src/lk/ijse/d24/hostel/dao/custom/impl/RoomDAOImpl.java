@@ -8,13 +8,21 @@ package lk.ijse.d24.hostel.dao.custom.impl;
 import lk.ijse.d24.hostel.dao.custom.RoomDAO;
 import lk.ijse.d24.hostel.entity.Room;
 import org.hibernate.Session;
+import org.hibernate.query.Query;
 
 import java.util.List;
 
 public class RoomDAOImpl implements RoomDAO {
+
+    private Session session;
+
     @Override
     public List<Room> getAll() throws Exception {
-        return null;
+        String sql = "FROM room";
+        Query query = session.createQuery(sql);
+        List<Room> list = query.list();
+        session.close();
+        return list;
     }
 
     @Override
