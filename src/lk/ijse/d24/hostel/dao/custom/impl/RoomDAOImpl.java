@@ -10,6 +10,7 @@ import lk.ijse.d24.hostel.entity.Room;
 import org.hibernate.Session;
 import org.hibernate.query.Query;
 
+import java.io.Serializable;
 import java.util.List;
 
 public class RoomDAOImpl implements RoomDAO {
@@ -27,12 +28,17 @@ public class RoomDAOImpl implements RoomDAO {
 
     @Override
     public String save(Room dto) throws Exception {
-        return null;
+        return (String) session.save(dto);
     }
 
     @Override
     public void update(Room dto) throws Exception {
+        session.update(dto);
+    }
 
+    @Override
+    public void delete(Room dto) throws Exception {
+        session.delete(dto);
     }
 
     @Override
