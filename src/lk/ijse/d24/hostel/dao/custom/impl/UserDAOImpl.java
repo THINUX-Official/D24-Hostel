@@ -5,13 +5,14 @@ package lk.ijse.d24.hostel.dao.custom.impl;
     @created 11-Apr-23 - 19:20 
 */
 
+import lk.ijse.d24.hostel.dao.SuperDAO;
 import lk.ijse.d24.hostel.dao.custom.UserDAO;
 import lk.ijse.d24.hostel.entity.User;
 import org.hibernate.Session;
 
 import java.util.List;
 
-public class UserDAOImpl implements UserDAO {
+public class UserDAOImpl implements UserDAO, SuperDAO {
     @Override
     public List<User> getAll() throws Exception {
         return null;
@@ -24,6 +25,11 @@ public class UserDAOImpl implements UserDAO {
 
     @Override
     public void update(User dto) throws Exception {
+
+    }
+
+    @Override
+    public void delete(User dto) throws Exception {
 
     }
 

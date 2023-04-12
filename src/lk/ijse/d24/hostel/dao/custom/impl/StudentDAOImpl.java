@@ -5,13 +5,14 @@ package lk.ijse.d24.hostel.dao.custom.impl;
     @created 11-Apr-23 - 19:16 
 */
 
+import lk.ijse.d24.hostel.dao.SuperDAO;
 import lk.ijse.d24.hostel.dao.custom.StudentDAO;
 import lk.ijse.d24.hostel.entity.Student;
 import org.hibernate.Session;
 
 import java.util.List;
 
-public class StudentDAOImpl implements StudentDAO {
+public class StudentDAOImpl implements StudentDAO, SuperDAO {
     @Override
     public List<Student> getAll() throws Exception {
         return null;
@@ -24,6 +25,11 @@ public class StudentDAOImpl implements StudentDAO {
 
     @Override
     public void update(Student dto) throws Exception {
+
+    }
+
+    @Override
+    public void delete(Student dto) throws Exception {
 
     }
 

@@ -5,6 +5,7 @@ package lk.ijse.d24.hostel.dao.custom.impl;
     @created 11-Apr-23 - 19:01 
 */
 
+import lk.ijse.d24.hostel.dao.SuperDAO;
 import lk.ijse.d24.hostel.dao.custom.RoomDAO;
 import lk.ijse.d24.hostel.entity.Room;
 import org.hibernate.Session;
@@ -13,7 +14,7 @@ import org.hibernate.query.Query;
 import java.io.Serializable;
 import java.util.List;
 
-public class RoomDAOImpl implements RoomDAO {
+public class RoomDAOImpl implements RoomDAO, SuperDAO {
 
     private Session session;
 
