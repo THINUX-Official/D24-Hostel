@@ -15,6 +15,7 @@ import javafx.scene.layout.AnchorPane;
 import lk.ijse.d24.hostel.bo.BOFactory;
 import lk.ijse.d24.hostel.bo.custom.RoomBO;
 import lk.ijse.d24.hostel.model.RoomDTO;
+
 import java.util.List;
 
 public class RoomFormController {
@@ -24,7 +25,7 @@ public class RoomFormController {
     public JFXTextField txtKeyMoney;
     public JFXTextField txtRoomQty;
     public JFXTextField txtSearch;
-    public TableView tblRoom;
+    public TableView<RoomDTO> tblRoom;
     public TableColumn colRID;
     public TableColumn colType;
     public TableColumn colKeyMoney;
@@ -42,32 +43,10 @@ public class RoomFormController {
         colKeyMoney.setCellValueFactory(new PropertyValueFactory<>("room_key_money"));
         colRoomQty.setCellValueFactory(new PropertyValueFactory<>("room_qty"));
 
-        loadAllRooms();
+//        loadAllRooms();
     }
 
     private void loadAllRooms() {
-
-        /*ObservableList<RoomTM> roomTMS = FXCollections.observableArrayList();
-
-        try {
-            List<RoomDTO> roomDTOS = roomBO.getAllRoom();
-
-            for (RoomDTO roomDTO : roomDTOS) {
-                RoomTM roomTM = new RoomTM(
-                        roomDTO.getRoomTypeId(),
-                        roomDTO.getType(),
-                        roomDTO.getKeyMoney(),
-                        roomDTO.getQty()
-                );
-                roomTMS.add(roomTM);
-            }
-            tblRoom.setItems(roomTMS);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-        tblRoom.getItems().clear();*/
-
         try {
 //            ArrayList<RoomDTO> roomDTOArrayList= (ArrayList<RoomDTO>) roomBO.getAllRoom();
             List<RoomDTO> allRoom = roomBO.getAllRoom();
@@ -98,7 +77,6 @@ public class RoomFormController {
 
     }
 
-
     public void txtIIDKeyTypeOnAction(javafx.scene.input.KeyEvent keyEvent) {
 
     }
@@ -109,5 +87,15 @@ public class RoomFormController {
 
     public void txtQtyOnHandKeyTypeOnAction(javafx.scene.input.KeyEvent keyEvent) {
 
+    }
+
+    private String generateNewID() throws Exception {
+        try {
+            return roomBO.generateRoomId();
+        } catch (Exception e) {
+            new Alert(Alert.AlertType.ERROR, "Failed to generate the new ID " + e.getMessage()).show();
+            e.printStackTrace();
+        }
+        return "RES_+001";
     }
 }
