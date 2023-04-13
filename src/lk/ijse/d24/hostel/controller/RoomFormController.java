@@ -6,16 +6,23 @@ package lk.ijse.d24.hostel.controller;
 */
 
 import com.jfoenix.controls.JFXTextField;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
+import lk.ijse.d24.hostel.bo.BOFactory;
+import lk.ijse.d24.hostel.bo.custom.RoomBO;
 import lk.ijse.d24.hostel.model.RoomDTO;
+import lk.ijse.d24.hostel.view.tm.RoomTM;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
+import java.util.List;
 
 public class RoomFormController {
     public AnchorPane pane;
@@ -33,6 +40,38 @@ public class RoomFormController {
     public Label lblKeyMoney;
     public Label lblRoomQty;
     public Label lblType;
+
+    private final RoomBO roomBO = (RoomBO) BOFactory.getBoFactory().getBOTypes(BOFactory.BOTypes.ROOM);
+
+    public void initialize() {
+        colRID.setCellValueFactory(new PropertyValueFactory<>("room_type_id"));
+        colType.setCellValueFactory(new PropertyValueFactory<>("room_type"));
+        colKeyMoney.setCellValueFactory(new PropertyValueFactory<>("room_key_money"));
+        colRoomQty.setCellValueFactory(new PropertyValueFactory<>("room_qty"));
+
+        loadAllRooms();
+    }
+
+    private void loadAllRooms() {
+        ObservableList<RoomTM> roomTMS = FXCollections.observableArrayList();
+
+        try {
+            List<RoomDTO> roomDTOS = roomBO.getAllRoom();
+
+            for (RoomDTO roomDTO : roomDTOS) {
+                RoomTM roomTM = new RoomTM(
+                        roomDTO.getRoomTypeId(),
+                        roomDTO.getType(),
+                        roomDTO.getKeyMoney(),
+                        roomDTO.getQty()
+                );
+                roomTMS.add(roomTM);
+            }
+            tblRoom.setItems(roomTMS);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     public void addOnAction(javafx.event.ActionEvent actionEvent) {
 
