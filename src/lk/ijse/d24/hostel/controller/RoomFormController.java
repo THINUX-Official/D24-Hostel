@@ -6,9 +6,7 @@ package lk.ijse.d24.hostel.controller;
 */
 
 import com.jfoenix.controls.JFXTextField;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
@@ -17,17 +15,12 @@ import javafx.scene.layout.AnchorPane;
 import lk.ijse.d24.hostel.bo.BOFactory;
 import lk.ijse.d24.hostel.bo.custom.RoomBO;
 import lk.ijse.d24.hostel.model.RoomDTO;
-import lk.ijse.d24.hostel.view.tm.RoomTM;
-
-import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.KeyEvent;
 import java.util.List;
 
 public class RoomFormController {
     public AnchorPane pane;
     public JFXTextField txtRID;
-    public JFXTextField txtType;
+    public JFXTextField txtRoomType;
     public JFXTextField txtKeyMoney;
     public JFXTextField txtRoomQty;
     public JFXTextField txtSearch;
@@ -53,7 +46,8 @@ public class RoomFormController {
     }
 
     private void loadAllRooms() {
-        ObservableList<RoomTM> roomTMS = FXCollections.observableArrayList();
+
+        /*ObservableList<RoomTM> roomTMS = FXCollections.observableArrayList();
 
         try {
             List<RoomDTO> roomDTOS = roomBO.getAllRoom();
@@ -68,6 +62,25 @@ public class RoomFormController {
                 roomTMS.add(roomTM);
             }
             tblRoom.setItems(roomTMS);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        tblRoom.getItems().clear();*/
+
+        try {
+//            ArrayList<RoomDTO> roomDTOArrayList= (ArrayList<RoomDTO>) roomBO.getAllRoom();
+            List<RoomDTO> allRoom = roomBO.getAllRoom();
+            System.out.println(allRoom);
+
+            for (RoomDTO roomDTO : allRoom) {
+                tblRoom.getItems().add(new RoomDTO(
+                        roomDTO.getRoomTypeId(),
+                        roomDTO.getType(),
+                        roomDTO.getKeyMoney(),
+                        roomDTO.getQty())
+                );
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }

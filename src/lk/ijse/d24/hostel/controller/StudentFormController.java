@@ -7,6 +7,8 @@ package lk.ijse.d24.hostel.controller;
 
 import com.jfoenix.controls.JFXTextField;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
+import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.AnchorPane;
 import lk.ijse.d24.hostel.model.StudentDTO;
@@ -16,99 +18,29 @@ import java.awt.event.ActionEvent;
 import java.awt.event.KeyEvent;
 
 public class StudentFormController {
-//    public javafx.scene.control.Label lblSID;
-    @FXML
-    private AnchorPane pane;
 
-    @FXML
-    private JFXTextField txtSID;
 
-    @FXML
-    private JFXTextField txtName;
-
-    @FXML
-    private JFXTextField txtAddress;
-
-    @FXML
-    private JFXTextField txtContact;
-
-    @FXML
-    private JFXTextField txtSearch;
-
-    @FXML
-    private TableView<StudentDTO> tblStudent;
-
-    /*@FXML
-    private TableColumn<StudentDTO, String> colSID;
-
-    @FXML
-    private TableColumn<StudentDTO, String> colName;
-
-    @FXML
-    private TableColumn<StudentDTO, String> colAddress;
-
-    @FXML
-    private TableColumn<StudentDTO, String> colContact;
-
-    @FXML
-    private TableColumn<StudentDTO, Date> colDOB;
-
-    @FXML
-    private TableColumn<StudentDTO, String> colGender;*/
-
-    @FXML
-    private Label lblSID;
-
-    @FXML
-    private Label lblAddress;
-
-    @FXML
-    private Label lblContact;
-
-    @FXML
-    private JFXTextField txtDOB;
-
-    @FXML
-    private Label lblDOB;
-
-    @FXML
-    private JFXTextField txtGender;
-
-    @FXML
-    private Label lblGender;
-
-    @FXML
-    private Label lblName;
-
-    @FXML
-    void addOnAction(ActionEvent event) {
-
-    }
-
-    @FXML
-    void deleteOnAction(ActionEvent event) {
-
-    }
-
-    @FXML
-    void txtIIDKeyTypeOnAction(KeyEvent event) {
-
-    }
-
-    @FXML
-    void txtQtyOnHandKeyTypeOnAction(KeyEvent event) {
-
-    }
-
-    @FXML
-    void txtUnitPriceKeyTypeOnAction(KeyEvent event) {
-
-    }
-
-    @FXML
-    void updateOnAction(ActionEvent event) {
-
-    }
+    public AnchorPane pane;
+    public JFXTextField txtSID;
+    public JFXTextField txtName;
+    public JFXTextField txtAddress;
+    public JFXTextField txtContact;
+    public JFXTextField txtSearch;
+    public TableView tblStudent;
+    public TableColumn colSID;
+    public TableColumn colName;
+    public TableColumn colAddress;
+    public TableColumn colContact;
+    public TableColumn colDOB;
+    public TableColumn colGender;
+    public Label lblSID;
+    public Label lblAddress;
+    public Label lblContact;
+    public JFXTextField txtDOB;
+    public Label lblDOB;
+    public JFXTextField txtGender;
+    public Label lblGender;
+    public Label lblName;
 
     public void addOnAction(javafx.event.ActionEvent actionEvent) {
 

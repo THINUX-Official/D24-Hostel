@@ -44,7 +44,8 @@ public class RoomBOImpl implements RoomBO {
 
         try {
             roomDAO.setSession(session);
-            String id = roomDAO.save(new Room(roomDTO.getRoomTypeId(), roomDTO.getType(), roomDTO.getKeyMoney(), roomDTO.getQty()));
+            String id = roomDAO.save(new Room(roomDTO.getRoomTypeId(), roomDTO.getType(),
+                    roomDTO.getKeyMoney(), roomDTO.getQty()));
             transaction.commit();
             session.close();
             return id;
