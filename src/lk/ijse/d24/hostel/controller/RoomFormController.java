@@ -48,7 +48,6 @@ public class RoomFormController {
 
     private void loadAllRooms() {
         try {
-//            ArrayList<RoomDTO> roomDTOArrayList= (ArrayList<RoomDTO>) roomBO.getAllRoom();
             List<RoomDTO> allRoom = roomBO.getAllRoom();
             System.out.println(allRoom);
 
@@ -66,7 +65,21 @@ public class RoomFormController {
     }
 
     public void addOnAction(javafx.event.ActionEvent actionEvent) {
+        String id = txtRID.getText();
+        String roomType = txtRoomType.getText();
+        String keyMoney = txtKeyMoney.getText();
+        int roomQty = Integer.parseInt(txtRoomQty.getText());
 
+        try {
+            roomBO.saveRoom(new RoomDTO(id, roomType, keyMoney, roomQty));
+
+            tblRoom.getItems().add(new RoomDTO(id, roomType, keyMoney, roomQty));
+        } catch (Exception e) {
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+            txtRoomQty.getText();
+            e.printStackTrace();
+            return;
+        }
     }
 
     public void deleteOnAction(javafx.event.ActionEvent actionEvent) {

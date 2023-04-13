@@ -12,7 +12,7 @@ public class Utility {
     public static Properties getProperties() {
         Properties properties = new Properties();
         try {
-            properties.load(ClassLoader.getSystemClassLoader().getResourceAsStream("hibernate,properties"));
+            properties.load(ClassLoader.getSystemClassLoader().getResourceAsStream("hibernate.properties"));
 
         } catch (IOException e) {
             e.printStackTrace();

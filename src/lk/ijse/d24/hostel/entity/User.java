@@ -6,11 +6,13 @@ package lk.ijse.d24.hostel.entity;
 */
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.Id;
 
+@Entity(name = "user")
 public class User {
     @Id
-    @Column(name = "user_id")
+    @Column(name = "user_id", length = 10)
     private String uId;
 
     @Column(name = "user_name")
