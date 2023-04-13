@@ -39,11 +39,11 @@ public class Navigation {
                 break;
             case RESERVATION:
                 window.setTitle("Reservation Form");
-                initUI("LoginForm.fxml");
+                initUI("ReservationForm.fxml");
                 break;
             case STUDENT:
                 window.setTitle("Student Form");
-                initUI("LoginForm.fxml");
+                initUI("StudentForm.fxml");
                 break;
             case USER:
                 window.setTitle("User Form");
