@@ -12,18 +12,18 @@ public class StudentDTO {
     private String name;
     private String address;
     private String contact;
-    private Date date;
+    private Date dOB;
     private String gender;
 
     public StudentDTO() {
     }
 
-    public StudentDTO(String sId, String name, String address, String contact, Date date, String gender) {
+    public StudentDTO(String sId, String name, String address, String contact, Date dOB, String gender) {
         this.sId = sId;
         this.name = name;
         this.address = address;
         this.contact = contact;
-        this.date = date;
+        this.dOB = dOB;
         this.gender = gender;
     }
 
@@ -59,12 +59,12 @@ public class StudentDTO {
         this.contact = contact;
     }
 
-    public Date getDate() {
-        return date;
+    public Date getdOB() {
+        return dOB;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public void setdOB(Date dOB) {
+        this.dOB = dOB;
     }
 
     public String getGender() {
@@ -82,7 +82,7 @@ public class StudentDTO {
                 ", name='" + name + '\'' +
                 ", address='" + address + '\'' +
                 ", contact='" + contact + '\'' +
-                ", date=" + date +
+                ", dOB=" + dOB +
                 ", gender='" + gender + '\'' +
                 '}';
     }
