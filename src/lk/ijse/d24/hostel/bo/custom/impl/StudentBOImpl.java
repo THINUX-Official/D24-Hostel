@@ -22,7 +22,7 @@ public class StudentBOImpl implements StudentBO {
 
     private Session session;
 
-    StudentDAO studentDAO = (StudentDAO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.STUDENTDAO);
+    StudentDAO studentDAO = (StudentDAO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.STUDENT_DAO);
 
     @Override
     public List<StudentDTO> getAllStudents() throws Exception {

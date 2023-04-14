@@ -21,7 +21,7 @@ public class RoomBOImpl implements RoomBO {
 
     private Session session;
 
-    RoomDAO roomDAO = (RoomDAO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.ROOMDAO);
+    RoomDAO roomDAO = (RoomDAO) DAOFactory.getDaoFactory().getDAO(DAOFactory.DAOTypes.ROOM_DAO);
 
     @Override
     public List<RoomDTO> getAllRoom() throws Exception {

@@ -26,20 +26,20 @@ public class DAOFactory {
     }
 
     public enum DAOTypes {
-        ROOMDAO, STUDENTDAO, RESERVATIONDAO, USERDAO, QUERYDAO;
+        ROOM_DAO, STUDENT_DAO, RESERVATION_DAO, USER_DAO, QUERY_DAO;
     }
 
     public SuperDAO getDAO(DAOTypes daoTypes) {
         switch (daoTypes) {
-            case ROOMDAO:
+            case ROOM_DAO:
                 return new RoomDAOImpl();
-            case STUDENTDAO:
+            case STUDENT_DAO:
                 return new StudentDAOImpl();
-            case RESERVATIONDAO:
+            case RESERVATION_DAO:
                 return new ReservationDAOImpl();
-            case USERDAO:
+            case USER_DAO:
                 return new UserDAOImpl();
-            case QUERYDAO:
+            case QUERY_DAO:
                 return new QueryDAOImpl();
         }
         return null;
