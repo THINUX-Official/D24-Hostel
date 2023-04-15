@@ -29,9 +29,6 @@ public class Reservation {
     @JoinColumn(name = "room_type_id")
     private Room room;
 
-    public Reservation() {
-    }
-
     public Reservation(String resId, Date date, String status, Student student, Room room) {
         this.resId = resId;
         this.date = date;

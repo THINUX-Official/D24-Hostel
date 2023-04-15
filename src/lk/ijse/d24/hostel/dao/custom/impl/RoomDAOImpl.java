@@ -49,9 +49,9 @@ public class RoomDAOImpl implements RoomDAO, SuperDAO {
         Room room = (Room) session.createQuery(sql).setMaxResults(1).uniqueResult();
         session.close();
 
-        if (room != null ) {
+        if (room != null) {
             String lastId = room.getRoomTypeId();
-            int newRoomId = Integer.parseInt(lastId.replace("RES-", ""))+1;
+            int newRoomId = Integer.parseInt(lastId.replace("RES-", "")) + 1;
             System.out.println(newRoomId);
             return String.format("RES-%03D", newRoomId);
         }
@@ -61,16 +61,20 @@ public class RoomDAOImpl implements RoomDAO, SuperDAO {
 
     @Override
     public Room getObject(String s) throws Exception {
-        return null;
+        return session.get(Room.class, s);
     }
 
     @Override
     public void setSession(Session session) {
-
+        this.session = session;
     }
 
     @Override
     public List<String> getIds() throws Exception {
-        return null;
+        String sql = "SELECT id FROM room";
+        Query<String> query = session.createQuery(sql);
+        List<String> result = query.list();
+        session.close();
+        return result;
     }
 }

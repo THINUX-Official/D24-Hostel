@@ -7,6 +7,7 @@ package lk.ijse.d24.hostel.dao.custom;
 
 import lk.ijse.d24.hostel.dao.SuperDAO;
 
-public interface QueryDAO extends SuperDAO {
+import java.util.List;
 
+public interface QueryDAO extends SuperDAO {
 }

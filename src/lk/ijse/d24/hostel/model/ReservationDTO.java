@@ -21,7 +21,7 @@ public class ReservationDTO {
     private String sId;
     private String rId;
 
-    public ReservationDTO() {
+    public ReservationDTO(String resId, Date date, String status, StudentDTO studentDTO, RoomDTO roomDTO) {
     }
 
     public ReservationDTO(String resId, Date date, String status, StudentDTO studentDTO, RoomDTO roomDTO, String sId, String rId) {

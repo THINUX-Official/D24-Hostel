@@ -11,4 +11,5 @@ import org.hibernate.Session;
 
 public interface ReservationDAO extends CrudDAO<Reservation, String> {
     void setSession(Session session);
+    boolean changeCheckBoxValue(String id, String status);
 }
