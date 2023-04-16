@@ -44,19 +44,28 @@ public class RoomDAOImpl implements RoomDAO, SuperDAO {
 
     @Override
     public String generateNewId() throws Exception {
-        String sql = "FROM room ORDER BY id DESC";
+        /*String sql = "FROM room ORDER BY room_type_id DESC";
 
         Room room = (Room) session.createQuery(sql).setMaxResults(1).uniqueResult();
         session.close();
 
         if (room != null) {
             String lastId = room.getRoomTypeId();
-            int newRoomId = Integer.parseInt(lastId.replace("RES-", "")) + 1;
+            int newRoomId = Integer.parseInt(lastId.replace("RID-", "")) + 1;
             System.out.println(newRoomId);
-            return String.format("RES-%03D", newRoomId);
+            return String.format("RID-%03d", newRoomId);
         }
-        return "RES-001";
+        return "RID-001";*/
 
+        String sql = "FROM room ORDER BY room_type_id DESC";
+        Room room = (Room) session.createQuery(sql).setMaxResults(1).uniqueResult();
+
+        if (room != null) {
+            String lastId = room.getRoomTypeId();
+            int newRoomId = Integer.parseInt(lastId.replace("RM-", "")) + 1;
+            return String.format("RM-%04d", newRoomId);
+        }
+        return "RM-001";
     }
 
     @Override

@@ -15,7 +15,7 @@
          <Font name="Copperplate Gothic Light" size="48.0" />
       </font>
    </Label>
-   <JFXButton layoutX="1338.0" layoutY="290.0" onAction="#addOnAction" prefWidth="150.0" styleClass="primary_button" stylesheets="@../assets/css/CSS.css" text="ADD" textFill="WHITE">
+   <JFXButton fx:id="btnAdd" layoutX="1338.0" layoutY="290.0" onAction="#addOnAction" prefWidth="150.0" styleClass="primary_button" stylesheets="@../assets/css/CSS.css" text="ADD" textFill="WHITE">
       <font>
          <Font name="Aharoni Bold" size="24.0" />
       </font>
@@ -23,7 +23,7 @@
          <Cursor fx:constant="HAND" />
       </cursor>
    </JFXButton>
-   <JFXButton layoutX="1168.0" layoutY="994.0" onAction="#deleteOnAction" prefWidth="150.0" styleClass="danger_button" stylesheets="@../assets/css/CSS.css" text="DELETE" textFill="WHITE">
+   <JFXButton fx:id="btnDelete" layoutX="1168.0" layoutY="994.0" onAction="#deleteOnAction" prefWidth="150.0" styleClass="danger_button" stylesheets="@../assets/css/CSS.css" text="DELETE" textFill="WHITE">
       <font>
          <Font name="Aharoni Bold" size="24.0" />
       </font>
@@ -31,7 +31,7 @@
          <Cursor fx:constant="HAND" />
       </cursor>
    </JFXButton>
-   <JFXButton layoutX="1338.0" layoutY="994.0" onAction="#updateOnAction" prefWidth="150.0" styleClass="secondary_button" stylesheets="@../assets/css/CSS.css" text="UPDATE" textFill="WHITE">
+   <JFXButton fx:id="btnUpdate" layoutX="1338.0" layoutY="994.0" onAction="#updateOnAction" prefWidth="150.0" styleClass="secondary_button" stylesheets="@../assets/css/CSS.css" text="UPDATE" textFill="WHITE">
       <font>
          <Font name="Aharoni Bold" size="24.0" />
       </font>
