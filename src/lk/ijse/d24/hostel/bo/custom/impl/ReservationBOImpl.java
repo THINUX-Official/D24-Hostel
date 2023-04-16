@@ -82,12 +82,13 @@ public class ReservationBOImpl implements ReservationBO {
                                     reservationDTO.getStudentDTO().getAddress(),
                                     reservationDTO.getStudentDTO().getContact(),
                                     reservationDTO.getStudentDTO().getdOB(),
-                                    reservationDTO.getStudentDTO().getGender(),
+                                    reservationDTO.getStudentDTO().getGender()
+                                    ),
                                     new Room(
                                             reservationDTO.getRoomDTO().getRoomTypeId(),
                                             reservationDTO.getRoomDTO().getType(),
                                             reservationDTO.getRoomDTO().getKeyMoney(),
-                                            reservationDTO.getRoomDTO().getQty()))));
+                                            reservationDTO.getRoomDTO().getQty())));
 
             transaction.commit();
             session.close();
@@ -118,13 +119,13 @@ public class ReservationBOImpl implements ReservationBO {
                                     reservationDTO.getStudentDTO().getAddress(),
                                     reservationDTO.getStudentDTO().getContact(),
                                     reservationDTO.getStudentDTO().getdOB(),
-                                    reservationDTO.getStudentDTO().getGender(),
+                                    reservationDTO.getStudentDTO().getGender()
+                            ),
                                     new Room(
                                             reservationDTO.getRoomDTO().getRoomTypeId(),
                                             reservationDTO.getRoomDTO().getType(),
                                             reservationDTO.getRoomDTO().getKeyMoney(),
-                                            reservationDTO.getRoomDTO().getQty()
-                                    ))));
+                                            reservationDTO.getRoomDTO().getQty())));
 
             transaction.commit();
             session.close();
