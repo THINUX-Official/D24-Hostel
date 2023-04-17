@@ -13,6 +13,7 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import lk.ijse.d24.hostel.bo.BOFactory;
 import lk.ijse.d24.hostel.bo.custom.RoomBO;
+import lk.ijse.d24.hostel.entity.Room;
 import lk.ijse.d24.hostel.model.RoomDTO;
 
 import java.util.ArrayList;
@@ -46,10 +47,10 @@ public class RoomFormController {
     private final RoomBO roomBO = (RoomBO) BOFactory.getBoFactory().getBOTypes(BOFactory.BOTypes.ROOM);
 
     public void initialize() throws Exception {
-        colRID.setCellValueFactory(new PropertyValueFactory<>("room_type_id"));
-        colType.setCellValueFactory(new PropertyValueFactory<>("room_type"));
-        colKeyMoney.setCellValueFactory(new PropertyValueFactory<>("room_key_money"));
-        colRoomQty.setCellValueFactory(new PropertyValueFactory<>("room_qty"));
+        colRID.setCellValueFactory(new PropertyValueFactory<>("roomTypeId"));
+        colType.setCellValueFactory(new PropertyValueFactory<>("type"));
+        colKeyMoney.setCellValueFactory(new PropertyValueFactory<>("keyMoney"));
+        colRoomQty.setCellValueFactory(new PropertyValueFactory<>("qty"));
 
         tblRoom.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             btnDelete.setDisable(newValue == null);
@@ -178,7 +179,7 @@ public class RoomFormController {
     public void txtKeyMoneyKeyTypeOnAction(KeyEvent keyEvent) {
         lblKeyMoney.setText("");
 
-        Pattern amountPattern = Pattern.compile("^[0-9]{1,}$");
+        Pattern amountPattern = Pattern.compile("^[0-9]{3,}\\d+\\.\\d+$");
         amountMatcher = amountPattern.matcher(txtKeyMoney.getText());
 
         if (!amountMatcher.matches()) {
