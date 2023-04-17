@@ -9,6 +9,7 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import lk.ijse.d24.hostel.bo.BOFactory;
 import lk.ijse.d24.hostel.bo.custom.RoomBO;
@@ -16,10 +17,11 @@ import lk.ijse.d24.hostel.model.RoomDTO;
 
 import java.util.ArrayList;
 import java.util.Optional;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class RoomFormController {
     public AnchorPane pane;
-    public JFXTextField txtRID;
     public JFXTextField txtRoomType;
     public JFXTextField txtKeyMoney;
     public JFXTextField txtRoomQty;
@@ -36,6 +38,10 @@ public class RoomFormController {
     public JFXButton btnAdd;
     public JFXButton btnDelete;
     public JFXButton btnUpdate;
+    public Label lblRid;
+
+    private Matcher nameMatcher;
+    private Matcher amountMatcher;
 
     private final RoomBO roomBO = (RoomBO) BOFactory.getBoFactory().getBOTypes(BOFactory.BOTypes.ROOM);
 
@@ -50,7 +56,7 @@ public class RoomFormController {
             btnAdd.setDisable(newValue == null);
 
             if (newValue != null) {
-                txtRID.setText(newValue.getRoomTypeId());
+                lblRid.setText(newValue.getRoomTypeId());
                 txtRoomType.setText(newValue.getType());
                 txtKeyMoney.setText(newValue.getKeyMoney());
                 txtRoomQty.setText(String.valueOf(newValue.getQty()));
@@ -58,7 +64,7 @@ public class RoomFormController {
         });
 
         loadAllRooms();
-        txtRID.setText(generateNewID());
+        lblRid.setText(generateNewID());
     }
 
     private void loadAllRooms() {
@@ -81,7 +87,7 @@ public class RoomFormController {
     }
 
     public void addOnAction(javafx.event.ActionEvent actionEvent) {
-        String id = txtRID.getText();
+        String id = lblRid.getText();
         String roomType = txtRoomType.getText();
         String keyMoney = txtKeyMoney.getText();
         int roomQty = Integer.parseInt(txtRoomQty.getText());
@@ -101,7 +107,7 @@ public class RoomFormController {
     }
 
     public void updateOnAction(javafx.event.ActionEvent actionEvent) {
-        String id = txtRID.getText();
+        String id = lblRid.getText();
         String roomType = txtRoomType.getText();
         String keyMoney = txtKeyMoney.getText();
         int roomQty = Integer.parseInt(txtRoomQty.getText());
@@ -147,18 +153,6 @@ public class RoomFormController {
         txtRoomQty.clear();
     }
 
-    public void txtIIDKeyTypeOnAction(javafx.scene.input.KeyEvent keyEvent) {
-
-    }
-
-    public void txtUnitPriceKeyTypeOnAction(javafx.scene.input.KeyEvent keyEvent) {
-
-    }
-
-    public void txtQtyOnHandKeyTypeOnAction(javafx.scene.input.KeyEvent keyEvent) {
-
-    }
-
     private String generateNewID() throws Exception {
         try {
             return roomBO.generateRoomId();
@@ -167,5 +161,41 @@ public class RoomFormController {
             e.printStackTrace();
         }
         return "RM-001";
+    }
+
+    public void txtTypeKeyTypeOnAction(KeyEvent keyEvent) {
+        lblType.setText("");
+
+        Pattern namePattern = Pattern.compile("^([a-zA-Z]{2,})$");
+        nameMatcher = namePattern.matcher(txtRoomType.getText());
+
+        if (!nameMatcher.matches()) {
+            txtRoomType.requestFocus();
+            lblType.setText("Invalid Name");
+        }
+    }
+
+    public void txtKeyMoneyKeyTypeOnAction(KeyEvent keyEvent) {
+        lblKeyMoney.setText("");
+
+        Pattern amountPattern = Pattern.compile("^[0-9]{1,}$");
+        amountMatcher = amountPattern.matcher(txtKeyMoney.getText());
+
+        if (!amountMatcher.matches()) {
+            txtKeyMoney.requestFocus();
+            lblKeyMoney.setText("Invalid Input");
+        }
+    }
+
+    public void txtRoomQtyKeyTypeOnAction(KeyEvent keyEvent) {
+        lblRoomQty.setText("");
+
+        Pattern amountPattern = Pattern.compile("^[0-9]{1,}$");
+        amountMatcher = amountPattern.matcher(txtRoomQty.getText());
+
+        if (!amountMatcher.matches()) {
+            txtRoomQty.requestFocus();
+            lblRoomQty.setText("Invalid Input");
+        }
     }
 }

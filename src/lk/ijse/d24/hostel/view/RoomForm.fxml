@@ -39,20 +39,12 @@
          <Cursor fx:constant="HAND" />
       </cursor>
    </JFXButton>
-   <JFXTextField fx:id="txtRID" layoutX="20.0" layoutY="118.0" onKeyReleased="#txtIIDKeyTypeOnAction" prefWidth="725.0">
-      <font>
-         <Font size="18.0" />
-      </font>
-      <cursor>
-         <Cursor fx:constant="TEXT" />
-      </cursor>
-   </JFXTextField>
    <Label layoutX="20.0" layoutY="88.0" prefWidth="725.0" text="RID">
       <font>
          <Font name="Aharoni Bold" size="24.0" />
       </font>
    </Label>
-   <JFXTextField fx:id="txtRoomType" layoutX="763.0" layoutY="118.0" prefWidth="725.0">
+   <JFXTextField fx:id="txtRoomType" layoutX="763.0" layoutY="118.0" onKeyReleased="#txtTypeKeyTypeOnAction" prefWidth="725.0">
       <font>
          <Font size="18.0" />
       </font>
@@ -65,7 +57,7 @@
          <Font name="Aharoni Bold" size="24.0" />
       </font>
    </Label>
-   <JFXTextField fx:id="txtKeyMoney" layoutX="20.0" layoutY="219.0" onKeyReleased="#txtUnitPriceKeyTypeOnAction" prefWidth="725.0">
+   <JFXTextField fx:id="txtKeyMoney" layoutX="20.0" layoutY="219.0" onKeyReleased="#txtKeyMoneyKeyTypeOnAction" prefWidth="725.0">
       <font>
          <Font size="18.0" />
       </font>
@@ -78,7 +70,7 @@
          <Font name="Aharoni Bold" size="24.0" />
       </font>
    </Label>
-   <JFXTextField fx:id="txtRoomQty" layoutX="763.0" layoutY="219.0" onKeyReleased="#txtQtyOnHandKeyTypeOnAction" prefWidth="725.0">
+   <JFXTextField fx:id="txtRoomQty" layoutX="763.0" layoutY="219.0" onKeyReleased="#txtRoomQtyKeyTypeOnAction" prefWidth="725.0">
       <font>
          <Font size="18.0" />
       </font>
@@ -128,6 +120,11 @@
       </font>
    </Label>
    <Label fx:id="lblType" layoutX="763.0" layoutY="157.0" prefWidth="725.0" textFill="RED">
+      <font>
+         <Font name="Aharoni Bold" size="24.0" />
+      </font>
+   </Label>
+   <Label fx:id="lblRid" layoutX="20.0" layoutY="118.0" prefHeight="39.0" prefWidth="725.0">
       <font>
          <Font name="Aharoni Bold" size="24.0" />
       </font>
