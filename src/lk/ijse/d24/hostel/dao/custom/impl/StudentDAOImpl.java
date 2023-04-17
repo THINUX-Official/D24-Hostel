@@ -43,9 +43,8 @@ public class StudentDAOImpl implements StudentDAO, SuperDAO {
 
     @Override
     public String generateNewId() throws Exception {
-        String sql = "FROM student ORDER BY id DESC";
+        String sql = "FROM student ORDER BY student_id DESC";
         Student student = (Student) session.createQuery(sql).setMaxResults(1).uniqueResult();
-        session.close();
 
         if (student != null) {
             String lastId = student.getsId();

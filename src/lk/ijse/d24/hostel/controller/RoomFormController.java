@@ -18,7 +18,6 @@ import lk.ijse.d24.hostel.bo.custom.RoomBO;
 import lk.ijse.d24.hostel.model.RoomDTO;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class RoomFormController {
     public AnchorPane pane;
@@ -90,22 +89,47 @@ public class RoomFormController {
         int roomQty = Integer.parseInt(txtRoomQty.getText());
 
         try {
-            roomBO.saveRoom(new RoomDTO(id, roomType, keyMoney, roomQty));
+            RoomDTO roomDTO = new RoomDTO(id, roomType, keyMoney, roomQty);
 
-            tblRoom.getItems().add(new RoomDTO(id, roomType, keyMoney, roomQty));
+            roomBO.saveRoom(roomDTO);
+            tblRoom.getItems().add(roomDTO);
+
+            txtRID.clear();
+            txtRoomType.clear();
+            txtKeyMoney.clear();
+            txtRoomQty.clear();
+
         } catch (Exception e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
-            txtRoomQty.getText();
             e.printStackTrace();
-            return;
         }
     }
 
-    public void deleteOnAction(javafx.event.ActionEvent actionEvent) {
+    public void updateOnAction(javafx.event.ActionEvent actionEvent) {
+        String id = txtRID.getText();
+        String roomType = txtRoomType.getText();
+        String keyMoney = txtKeyMoney.getText();
+        int roomQty = Integer.parseInt(txtRoomQty.getText());
+
+        try {
+            RoomDTO roomDTO = new RoomDTO(id, roomType, keyMoney, roomQty);
+
+            roomBO.updateRoom(roomDTO);
+            tblRoom.getItems().add(roomDTO);
+
+            txtRID.clear();
+            txtRoomType.clear();
+            txtKeyMoney.clear();
+            txtRoomQty.clear();
+
+        } catch (Exception e) {
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+            e.printStackTrace();
+        }
 
     }
 
-    public void updateOnAction(javafx.event.ActionEvent actionEvent) {
+    public void deleteOnAction(javafx.event.ActionEvent actionEvent) {
 
     }
 

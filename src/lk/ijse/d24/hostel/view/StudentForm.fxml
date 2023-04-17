@@ -10,12 +10,17 @@
 <?import javafx.scene.text.Font?>
 
 <AnchorPane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="1080.0" prefWidth="1507.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="lk.ijse.d24.hostel.controller.StudentFormController">
+   <Label layoutX="763.0" layoutY="290.0" prefWidth="725.0" text="Gender">
+      <font>
+         <Font name="Aharoni Bold" size="24.0" />
+      </font>
+   </Label>
    <Label layoutX="20.0" layoutY="20.0" text="Student">
       <font>
          <Font name="Copperplate Gothic Light" size="48.0" />
       </font>
    </Label>
-   <JFXButton layoutX="1338.0" layoutY="290.0" onAction="#addOnAction" prefWidth="150.0" styleClass="primary_button" stylesheets="@../assets/css/CSS.css" text="ADD" textFill="WHITE">
+   <JFXButton fx:id="btnDelete" layoutX="1168.0" layoutY="994.0" onAction="#deleteOnAction" prefWidth="150.0" styleClass="danger_button" stylesheets="@../assets/css/CSS.css" text="DELETE" textFill="WHITE">
       <font>
          <Font name="Aharoni Bold" size="24.0" />
       </font>
@@ -23,7 +28,7 @@
          <Cursor fx:constant="HAND" />
       </cursor>
    </JFXButton>
-   <JFXButton layoutX="1168.0" layoutY="994.0" onAction="#deleteOnAction" prefWidth="150.0" styleClass="danger_button" stylesheets="@../assets/css/CSS.css" text="DELETE" textFill="WHITE">
+   <JFXButton fx:id="btnUpdate" layoutX="1338.0" layoutY="994.0" onAction="#updateOnAction" prefWidth="150.0" styleClass="secondary_button" stylesheets="@../assets/css/CSS.css" text="UPDATE" textFill="WHITE">
       <font>
          <Font name="Aharoni Bold" size="24.0" />
       </font>
@@ -31,22 +36,6 @@
          <Cursor fx:constant="HAND" />
       </cursor>
    </JFXButton>
-   <JFXButton layoutX="1338.0" layoutY="994.0" onAction="#updateOnAction" prefWidth="150.0" styleClass="secondary_button" stylesheets="@../assets/css/CSS.css" text="UPDATE" textFill="WHITE">
-      <font>
-         <Font name="Aharoni Bold" size="24.0" />
-      </font>
-      <cursor>
-         <Cursor fx:constant="HAND" />
-      </cursor>
-   </JFXButton>
-   <JFXTextField fx:id="txtSID" layoutX="20.0" layoutY="118.0" onKeyReleased="#txtIIDKeyTypeOnAction" prefWidth="725.0">
-      <font>
-         <Font size="18.0" />
-      </font>
-      <cursor>
-         <Cursor fx:constant="TEXT" />
-      </cursor>
-   </JFXTextField>
    <Label layoutX="20.0" layoutY="88.0" prefWidth="725.0" text="SID">
       <font>
          <Font name="Aharoni Bold" size="24.0" />
@@ -155,17 +144,25 @@
          <Cursor fx:constant="TEXT" />
       </cursor>
    </JFXTextField>
-   <Label layoutX="763.0" layoutY="290.0" prefWidth="725.0" text="Gender">
-      <font>
-         <Font name="Aharoni Bold" size="24.0" />
-      </font>
-   </Label>
    <Label fx:id="lblGender" layoutX="763.0" layoutY="359.0" prefWidth="725.0" textFill="RED">
       <font>
          <Font name="Aharoni Bold" size="24.0" />
       </font>
    </Label>
    <Label fx:id="lblName" layoutX="763.0" layoutY="157.0" prefWidth="725.0" textFill="RED">
+      <font>
+         <Font name="Aharoni Bold" size="24.0" />
+      </font>
+   </Label>
+   <JFXButton fx:id="btnAdd" layoutX="998.0" layoutY="994.0" onAction="#addOnAction" prefWidth="150.0" styleClass="primary_button" stylesheets="@../assets/css/CSS.css" text="ADD" textFill="WHITE">
+      <font>
+         <Font name="Aharoni Bold" size="24.0" />
+      </font>
+      <cursor>
+         <Cursor fx:constant="HAND" />
+      </cursor>
+   </JFXButton>
+   <Label fx:id="lblSid" layoutX="20.0" layoutY="118.0" prefHeight="39.0" prefWidth="725.0">
       <font>
          <Font name="Aharoni Bold" size="24.0" />
       </font>
