@@ -92,10 +92,7 @@ public class RoomFormController {
             roomBO.saveRoom(roomDTO);
             tblRoom.getItems().add(roomDTO);
 
-            txtRID.clear();
-            txtRoomType.clear();
-            txtKeyMoney.clear();
-            txtRoomQty.clear();
+            clearData();
 
         } catch (Exception e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
@@ -115,10 +112,7 @@ public class RoomFormController {
             roomBO.updateRoom(roomDTO);
             tblRoom.getItems().add(roomDTO);
 
-            txtRID.clear();
-            txtRoomType.clear();
-            txtKeyMoney.clear();
-            txtRoomQty.clear();
+            clearData();
 
         } catch (Exception e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
@@ -138,16 +132,19 @@ public class RoomFormController {
                 tblRoom.getItems().remove(roomDTO);
                 tblRoom.getSelectionModel().clearSelection();
 
-                txtRID.clear();
-                txtRoomType.clear();
-                txtKeyMoney.clear();
-                txtRoomQty.clear();
+                clearData();
 
             } catch (Exception e) {
                 new Alert(Alert.AlertType.ERROR, "Failed to delete room: " + e.getMessage()).show();
                 e.printStackTrace();
             }
         }
+    }
+
+    private void clearData() {
+        txtRoomType.clear();
+        txtKeyMoney.clear();
+        txtRoomQty.clear();
     }
 
     public void txtIIDKeyTypeOnAction(javafx.scene.input.KeyEvent keyEvent) {
