@@ -7,10 +7,7 @@ package lk.ijse.d24.hostel.controller;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import lk.ijse.d24.hostel.bo.BOFactory;
@@ -18,6 +15,7 @@ import lk.ijse.d24.hostel.bo.custom.RoomBO;
 import lk.ijse.d24.hostel.model.RoomDTO;
 
 import java.util.ArrayList;
+import java.util.Optional;
 
 public class RoomFormController {
     public AnchorPane pane;
@@ -130,7 +128,26 @@ public class RoomFormController {
     }
 
     public void deleteOnAction(javafx.event.ActionEvent actionEvent) {
+        RoomDTO roomDTO = tblRoom.getSelectionModel().getSelectedItem();
 
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure you want to delete this room?", ButtonType.YES, ButtonType.NO);
+        Optional<ButtonType> buttonType = alert.showAndWait();
+        if (buttonType.get() == ButtonType.YES) {
+            try {
+                roomBO.deleteRoom(roomDTO);
+                tblRoom.getItems().remove(roomDTO);
+                tblRoom.getSelectionModel().clearSelection();
+
+                txtRID.clear();
+                txtRoomType.clear();
+                txtKeyMoney.clear();
+                txtRoomQty.clear();
+
+            } catch (Exception e) {
+                new Alert(Alert.AlertType.ERROR, "Failed to delete room: " + e.getMessage()).show();
+                e.printStackTrace();
+            }
+        }
     }
 
     public void txtIIDKeyTypeOnAction(javafx.scene.input.KeyEvent keyEvent) {
