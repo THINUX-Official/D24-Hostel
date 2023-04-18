@@ -109,7 +109,7 @@ public class StudentBOImpl implements StudentBO {
     }
 
     @Override
-    public String generateNewId() throws Exception {
+    public String generateNewStudentId() throws Exception {
         session = SessionFactoryConfiguration.getInstance().getSession();
         studentDAO.setSession(session);
         return studentDAO.generateNewId();

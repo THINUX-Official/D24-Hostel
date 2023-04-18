@@ -3,6 +3,8 @@
 <?import com.jfoenix.controls.JFXButton?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.scene.Cursor?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -41,7 +43,7 @@
          <Font name="Aharoni Bold" size="24.0" />
       </font>
    </Label>
-   <JFXTextField fx:id="txtName" layoutX="763.0" layoutY="118.0" prefWidth="725.0">
+   <JFXTextField fx:id="txtName" layoutX="763.0" layoutY="118.0" onKeyReleased="#txtNameKeyTypeOnAction" prefWidth="725.0">
       <font>
          <Font size="18.0" />
       </font>
@@ -54,7 +56,7 @@
          <Font name="Aharoni Bold" size="24.0" />
       </font>
    </Label>
-   <JFXTextField fx:id="txtAddress" layoutX="20.0" layoutY="219.0" onKeyReleased="#txtUnitPriceKeyTypeOnAction" prefWidth="725.0">
+   <JFXTextField fx:id="txtAddress" layoutX="20.0" layoutY="219.0" onKeyReleased="#txtAddressKeyTypeOnAction" prefWidth="725.0">
       <font>
          <Font size="18.0" />
       </font>
@@ -67,7 +69,7 @@
          <Font name="Aharoni Bold" size="24.0" />
       </font>
    </Label>
-   <JFXTextField fx:id="txtContact" layoutX="763.0" layoutY="219.0" onKeyReleased="#txtQtyOnHandKeyTypeOnAction" prefWidth="725.0">
+   <JFXTextField fx:id="txtContact" layoutX="763.0" layoutY="219.0" onKeyReleased="#txtContactKeyTypeOnAction" prefWidth="725.0">
       <font>
          <Font size="18.0" />
       </font>
@@ -103,11 +105,6 @@
          <TableColumn fx:id="colGender" prefWidth="212.0" resizable="false" text="Gender" />
       </columns>
    </TableView>
-   <Label fx:id="lblSID" layoutX="20.0" layoutY="157.0" prefWidth="725.0" textFill="RED">
-      <font>
-         <Font name="Aharoni Bold" size="24.0" />
-      </font>
-   </Label>
    <Label fx:id="lblAddress" layoutX="20.0" layoutY="258.0" prefWidth="725.0" textFill="RED">
       <font>
          <Font name="Aharoni Bold" size="24.0" />
@@ -118,33 +115,7 @@
          <Font name="Aharoni Bold" size="24.0" />
       </font>
    </Label>
-   <JFXTextField fx:id="txtDOB" layoutX="20.0" layoutY="320.0" onKeyReleased="#txtUnitPriceKeyTypeOnAction" prefWidth="725.0">
-      <font>
-         <Font size="18.0" />
-      </font>
-      <cursor>
-         <Cursor fx:constant="TEXT" />
-      </cursor>
-   </JFXTextField>
    <Label layoutX="20.0" layoutY="290.0" prefWidth="725.0" text="DOB">
-      <font>
-         <Font name="Aharoni Bold" size="24.0" />
-      </font>
-   </Label>
-   <Label fx:id="lblDOB" layoutX="20.0" layoutY="359.0" prefWidth="725.0" textFill="RED">
-      <font>
-         <Font name="Aharoni Bold" size="24.0" />
-      </font>
-   </Label>
-   <JFXTextField fx:id="txtGender" layoutX="763.0" layoutY="320.0" onKeyReleased="#txtUnitPriceKeyTypeOnAction" prefWidth="725.0">
-      <font>
-         <Font size="18.0" />
-      </font>
-      <cursor>
-         <Cursor fx:constant="TEXT" />
-      </cursor>
-   </JFXTextField>
-   <Label fx:id="lblGender" layoutX="763.0" layoutY="359.0" prefWidth="725.0" textFill="RED">
       <font>
          <Font name="Aharoni Bold" size="24.0" />
       </font>
@@ -164,7 +135,16 @@
    </JFXButton>
    <Label fx:id="lblSid" layoutX="20.0" layoutY="118.0" prefHeight="39.0" prefWidth="725.0">
       <font>
-         <Font name="Aharoni Bold" size="24.0" />
+         <Font name="System Bold" size="18.0" />
       </font>
    </Label>
+   <DatePicker fx:id="dateDOB" layoutX="19.0" layoutY="320.0" prefHeight="39.0" prefWidth="725.0">
+      <cursor>
+         <Cursor fx:constant="HAND" />
+      </cursor></DatePicker>
+   <ComboBox fx:id="cmbGender" layoutX="763.0" layoutY="320.0" prefHeight="39.0" prefWidth="725.0">
+      <cursor>
+         <Cursor fx:constant="HAND" />
+      </cursor>
+   </ComboBox>
 </AnchorPane>

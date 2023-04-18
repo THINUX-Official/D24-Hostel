@@ -65,7 +65,7 @@ public class RoomDAOImpl implements RoomDAO, SuperDAO {
             int newRoomId = Integer.parseInt(lastId.replace("RM-", "")) + 1;
             return String.format("RM-%04d", newRoomId);
         }
-        return "RM-001";
+        return "RM-0001";
     }
 
     @Override

@@ -19,5 +19,5 @@ public interface StudentBO extends SuperBO {
 
     boolean deleteStudent(StudentDTO studentDTO) throws Exception;
 
-    String generateNewId() throws Exception;
+    String generateNewStudentId() throws Exception;
 }

@@ -124,7 +124,6 @@ public class RoomFormController {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
             e.printStackTrace();
         }
-
     }
 
     public void deleteOnAction(javafx.event.ActionEvent actionEvent) {
@@ -160,7 +159,7 @@ public class RoomFormController {
             new Alert(Alert.AlertType.ERROR, "Failed to generate the new ID " + e.getMessage()).show();
             e.printStackTrace();
         }
-        return "RM-001";
+        return "RM-0001";
     }
 
     public void txtTypeKeyTypeOnAction(KeyEvent keyEvent) {

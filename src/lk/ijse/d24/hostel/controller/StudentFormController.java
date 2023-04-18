@@ -7,18 +7,22 @@ package lk.ijse.d24.hostel.controller;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Label;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import lk.ijse.d24.hostel.bo.BOFactory;
 import lk.ijse.d24.hostel.bo.custom.StudentBO;
 import lk.ijse.d24.hostel.model.StudentDTO;
 
+import javax.swing.text.html.Option;
 import java.sql.Date;
 import java.util.ArrayList;
+import java.util.Optional;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class StudentFormController {
 
@@ -37,19 +41,21 @@ public class StudentFormController {
     public Label lblAddress;
     public Label lblContact;
     public JFXTextField txtDOB;
-    public Label lblDOB;
     public JFXTextField txtGender;
-    public Label lblGender;
     public Label lblName;
     public JFXButton btnAdd;
     public JFXButton btnDelete;
     public JFXButton btnUpdate;
     public Label lblSid;
-    public Label lblSID;
+    public DatePicker dateDOB;
+    public ComboBox<String> cmbGender;
+
+    private Matcher nameMatcher;
+    private Matcher contactMatcher;
 
     StudentBO studentBO = (StudentBO) BOFactory.getBoFactory().getBOTypes(BOFactory.BOTypes.STUDENT);
 
-    public  void initialize() throws Exception {
+    public void initialize() throws Exception {
         colSID.setCellValueFactory(new PropertyValueFactory<>("sId"));
         colName.setCellValueFactory(new PropertyValueFactory<>("name"));
         colAddress.setCellValueFactory(new PropertyValueFactory<>("address"));
@@ -68,17 +74,24 @@ public class StudentFormController {
                 txtContact.setText(String.valueOf(newValue.getContact()));
                 txtDOB.setText(String.valueOf(newValue.getdOB()));
                 txtGender.setText(String.valueOf(newValue.getGender()));
+
+                if (newValue.getGender().equals("Male")) {
+                    setCmbGender();
+                    cmbGender.getSelectionModel().select(0);
+                } else {
+                    cmbGender.getSelectionModel().select(1);
+                }
             }
         });
 
-        loadAllStudent();
-//        lblSid.setText(generateNewID());
+        lblSid.setText(generateNewID());
+//        loadAllStudent();
+        setCmbGender();
     }
 
     private void loadAllStudent() {
         try {
             ArrayList<StudentDTO> allStudent = (ArrayList<StudentDTO>) studentBO.getAllStudents();
-            System.out.println(allStudent);
 
             for (StudentDTO studentDTO : allStudent) {
                 tblStudent.getItems().add(new StudentDTO(
@@ -100,8 +113,8 @@ public class StudentFormController {
         String name = txtName.getText();
         String address = txtAddress.getText();
         String contact = txtContact.getText();
-        Date dOB = Date.valueOf(txtDOB.getText());
-        String gender = txtGender.getText();
+        Date dOB = Date.valueOf(dateDOB.getValue());
+        String gender = cmbGender.getSelectionModel().getSelectedItem();
 
         try {
             StudentDTO studentDTO = new StudentDTO(id, name, address, contact, dOB, gender);
@@ -110,6 +123,7 @@ public class StudentFormController {
             tblStudent.getItems().add(studentDTO);
 
             clearData();
+
         } catch (Exception e) {
             new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
             e.printStackTrace();
@@ -117,28 +131,51 @@ public class StudentFormController {
     }
 
     public void updateOnAction(javafx.event.ActionEvent actionEvent) {
+        String id = lblSid.getText();
+        String name = txtName.getText();
+        String address = txtAddress.getText();
+        String contact = txtContact.getText();
+        Date dOB = Date.valueOf(dateDOB.getValue());
+        String gender = cmbGender.getSelectionModel().getSelectedItem();
 
+        try {
+            StudentDTO studentDTO = new StudentDTO(id, name, address, contact, dOB, gender);
+
+            studentBO.updateStudent(studentDTO);
+            tblStudent.getItems().add(studentDTO);
+
+            clearData();
+
+        } catch (Exception e) {
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+            e.printStackTrace();
+        }
     }
 
-    public void deleteOnAction(javafx.event.ActionEvent actionEvent) {
+    public void deleteOnAction(javafx.event.ActionEvent actionEvent) throws Exception {
+        StudentDTO studentDTO = tblStudent.getSelectionModel().getSelectedItem();
 
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure you want to delete this Student?", ButtonType.YES, ButtonType.NO);
+        Optional<ButtonType> buttonType = alert.showAndWait();
+        if (buttonType.get() == ButtonType.YES) {
+            try {
+                studentBO.deleteStudent(studentDTO);
+                tblStudent.getItems().remove(studentDTO);
+                tblStudent.getSelectionModel().clearSelection();
+
+                clearData();
+
+            } catch (Exception e) {
+                new Alert(Alert.AlertType.ERROR, "Failed to delete room: " + e.getMessage()).show();
+                e.printStackTrace();
+            }
+        }
     }
 
-    public void txtIIDKeyTypeOnAction(javafx.scene.input.KeyEvent keyEvent) {
-
-    }
-
-    public void txtUnitPriceKeyTypeOnAction(javafx.scene.input.KeyEvent keyEvent) {
-
-    }
-
-    public void txtQtyOnHandKeyTypeOnAction(javafx.scene.input.KeyEvent keyEvent) {
-
-    }
 
     private String generateNewID() throws Exception {
         try {
-            return studentBO.generateNewId();
+            return studentBO.generateNewStudentId();
         } catch (Exception e) {
             new Alert(Alert.AlertType.ERROR, "Failed to generate the new ID " + e.getMessage()).show();
             e.printStackTrace();
@@ -152,5 +189,51 @@ public class StudentFormController {
         txtContact.clear();
         txtDOB.clear();
         txtGender.clear();
+    }
+
+    private void setCmbGender() {
+        ArrayList<String> gender = new ArrayList<>();
+        gender.add("Male");
+        gender.add("Female");
+
+        ObservableList<String> observableList = FXCollections.observableList(gender);
+        cmbGender.setItems(observableList);
+
+    }
+
+    public void txtNameKeyTypeOnAction(KeyEvent keyEvent) {
+        lblName.setText("");
+
+        Pattern namePattern = Pattern.compile(".*[a-zA-Z0-9]{4,}");
+        nameMatcher = namePattern.matcher(txtName.getText());
+
+        if (!nameMatcher.matches()) {
+            txtName.requestFocus();
+            lblName.setText("Invalid Name");
+        }
+    }
+
+    public void txtAddressKeyTypeOnAction(KeyEvent keyEvent) {
+        lblAddress.setText("");
+
+        Pattern namePattern = Pattern.compile(".*[a-zA-Z0-9]{4,}");
+        nameMatcher = namePattern.matcher(txtAddress.getText());
+
+        if (!nameMatcher.matches()) {
+            txtAddress.requestFocus();
+            lblAddress.setText("Invalid Name");
+        }
+    }
+
+    public void txtContactKeyTypeOnAction(KeyEvent keyEvent) {
+        lblContact.setText("");
+
+        Pattern contactPattern = Pattern.compile(".*(?:7|0|(?:\\\\+94))[0-9]{9,10}");
+        contactMatcher = contactPattern.matcher(txtContact.getText());
+
+        if (!contactMatcher.matches()) {
+            txtContact.requestFocus();
+            lblContact.setText("Invalid Name");
+        }
     }
 }
