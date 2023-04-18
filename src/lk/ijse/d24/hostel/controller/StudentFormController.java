@@ -16,6 +16,8 @@ import javafx.scene.layout.AnchorPane;
 import lk.ijse.d24.hostel.bo.BOFactory;
 import lk.ijse.d24.hostel.bo.custom.StudentBO;
 import lk.ijse.d24.hostel.model.StudentDTO;
+
+import java.sql.Date;
 import java.util.ArrayList;
 
 public class StudentFormController {
@@ -48,12 +50,12 @@ public class StudentFormController {
     StudentBO studentBO = (StudentBO) BOFactory.getBoFactory().getBOTypes(BOFactory.BOTypes.STUDENT);
 
     public  void initialize() throws Exception {
-        colSID.setCellValueFactory(new PropertyValueFactory<>("student_id"));
-        colName.setCellValueFactory(new PropertyValueFactory<>("student_name"));
-        colAddress.setCellValueFactory(new PropertyValueFactory<>("student_address"));
-        colContact.setCellValueFactory(new PropertyValueFactory<>("student_contact"));
-        colDOB.setCellValueFactory(new PropertyValueFactory<>("student_date_of_birth"));
-        colGender.setCellValueFactory(new PropertyValueFactory<>("student_gender"));
+        colSID.setCellValueFactory(new PropertyValueFactory<>("sId"));
+        colName.setCellValueFactory(new PropertyValueFactory<>("name"));
+        colAddress.setCellValueFactory(new PropertyValueFactory<>("address"));
+        colContact.setCellValueFactory(new PropertyValueFactory<>("contact"));
+        colDOB.setCellValueFactory(new PropertyValueFactory<>("dOB"));
+        colGender.setCellValueFactory(new PropertyValueFactory<>("gender"));
 
         tblStudent.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
             btnDelete.setDisable(newValue == null);
@@ -70,13 +72,12 @@ public class StudentFormController {
         });
 
         loadAllStudent();
-        lblSid.setText(generateNewID());
+//        lblSid.setText(generateNewID());
     }
 
     private void loadAllStudent() {
         try {
             ArrayList<StudentDTO> allStudent = (ArrayList<StudentDTO>) studentBO.getAllStudents();
-//            List<StudentDTO> allStudent = studentBO.getAllStudents();
             System.out.println(allStudent);
 
             for (StudentDTO studentDTO : allStudent) {
@@ -94,15 +95,32 @@ public class StudentFormController {
         }
     }
 
-    public void addOnAction(javafx.event.ActionEvent actionEvent) {
+    public void addOnAction(javafx.event.ActionEvent actionEvent) throws Exception {
+        String id = lblSid.getText();
+        String name = txtName.getText();
+        String address = txtAddress.getText();
+        String contact = txtContact.getText();
+        Date dOB = Date.valueOf(txtDOB.getText());
+        String gender = txtGender.getText();
+
+        try {
+            StudentDTO studentDTO = new StudentDTO(id, name, address, contact, dOB, gender);
+
+            studentBO.saveStudent(studentDTO);
+            tblStudent.getItems().add(studentDTO);
+
+            clearData();
+        } catch (Exception e) {
+            new Alert(Alert.AlertType.ERROR, e.getMessage()).show();
+            e.printStackTrace();
+        }
+    }
+
+    public void updateOnAction(javafx.event.ActionEvent actionEvent) {
 
     }
 
     public void deleteOnAction(javafx.event.ActionEvent actionEvent) {
-
-    }
-
-    public void updateOnAction(javafx.event.ActionEvent actionEvent) {
 
     }
 
@@ -126,5 +144,13 @@ public class StudentFormController {
             e.printStackTrace();
         }
         return "S00-001";
+    }
+
+    private void clearData() {
+        txtName.clear();
+        txtAddress.clear();
+        txtContact.clear();
+        txtDOB.clear();
+        txtGender.clear();
     }
 }

@@ -13,7 +13,6 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import lk.ijse.d24.hostel.bo.BOFactory;
 import lk.ijse.d24.hostel.bo.custom.RoomBO;
-import lk.ijse.d24.hostel.entity.Room;
 import lk.ijse.d24.hostel.model.RoomDTO;
 
 import java.util.ArrayList;
